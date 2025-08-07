@@ -10,12 +10,12 @@ const messages = new Schema({
         type: String,
         required: true
     },
-    userId: {
-        type: Schema.Types.ObjectId,
+    senderPhoneNo: {
+        type: String,
         ref: 'users'
     },
-    receiverId: {
-        type: Schema.Types.ObjectId,
+    receiverPhoneNo: {
+        type: String,
         ref: 'users'
     },
     conversationId: {
