@@ -2,7 +2,8 @@ import React, { useState } from 'react'
 import Body from './Body'
 import Person from './Person'
 import MessageBox from './MessageBox'
-import IndividualChat from './Chat'
+import IndividualChat from './IndividualChat'
+
 
 function ShowChat({ chatId }) {
     const [messages, setMessages] = useState([])
@@ -15,7 +16,8 @@ function ShowChat({ chatId }) {
                         :
                         <div>
                             <Person />
-                            <MessageBox />
+                            <IndividualChat messages={messages}/>
+                            <MessageBox messages={messages} setMessages={setMessages} />
                         </div>
                 }
             </div>

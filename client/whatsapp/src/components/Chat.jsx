@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { FaCircleUser } from "react-icons/fa6";
-function IndividualChat({ setChatId, id, name, recentMessage, timestamp }) {
+function Chat({ setChatId, id, name, recentMessage, timestamp }) {
 
     const handleOpenChat = () => {
         setChatId(id)
@@ -23,4 +23,4 @@ function IndividualChat({ setChatId, id, name, recentMessage, timestamp }) {
     )
 }
 
-export default IndividualChat
+export default Chat
