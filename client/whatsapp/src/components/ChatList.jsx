@@ -1,27 +1,27 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Chat from './Chat'
-function ChatList({ chatId, setChatId }) {
-    const chatList = [
-        {
-            id: "fjsijfosjf",
-            name: "Neha",
-            recentMessage: "Hello how are you?",
-            timestamp: "Yesterday"
-        },
-        {
-            id: "9foisdjfs",
-            name: "Paul",
-            recentMessage: "Hey there?",
-            timestamp: "Friday"
+import { showUserConversations } from '../services/chat.services'
+import { useState } from 'react'
+import formatWhatsAppDate from '../utils/formatWhatsappDate'
+function ChatList({ chatId, setChatId, setChatName }) {
+    const [chatList, setChatList] = useState([])
+
+    useEffect(() => {
+        async function showConversations() {
+            let data = await showUserConversations()
+            console.log(data)
+            setChatList(data)
         }
-    ]
+        showConversations()
+    }, [])
+
     return (
         <div className='mt-4'>
             {
                 chatList.map((chat) => {
                     return (
-                        <div key={chat.id}>
-                            <Chat setChatId={setChatId} name={chat.name} recentMessage={chat.recentMessage} timestamp={chat.timestamp} />
+                        <div key={chat._id}>
+                            <Chat setChatId={setChatId} id={chat.conversationId} name={chat.conversationName} recentMessage={chat.lastMessage} timestamp={formatWhatsAppDate(chat.date)} setChatName={setChatName} />
                         </div>
                     )
                 })

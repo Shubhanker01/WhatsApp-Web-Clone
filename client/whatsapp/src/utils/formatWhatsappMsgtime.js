@@ -1,10 +1,10 @@
 
-function getWhatsAppTime() {
-  const now = new Date();
+function getWhatsAppTime(time) {
+  const now = new Date(time);
   let hours = now.getHours();
   const minutes = now.getMinutes();
   const ampm = hours >= 12 ? 'PM' : 'AM';
-  
+
   hours = hours % 12 || 12; // Convert 0 to 12 for AM times
   const formattedMinutes = minutes.toString().padStart(2, '0');
 

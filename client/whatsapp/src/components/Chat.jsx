@@ -1,9 +1,11 @@
 import React, { useState } from 'react'
 import { FaCircleUser } from "react-icons/fa6";
-function Chat({ setChatId, id, name, recentMessage, timestamp }) {
+function Chat({ setChatId, id, name, recentMessage, timestamp, setChatName }) {
 
     const handleOpenChat = () => {
         setChatId(id)
+        setChatName(name)
+        console.log(id)
     }
     return (
         <div className='grid grid-cols-2 ml-4 mt-4 cursor-pointer hover:bg-slate-200 rounded-md p-2' onClick={handleOpenChat}>
@@ -13,7 +15,7 @@ function Chat({ setChatId, id, name, recentMessage, timestamp }) {
                 </div>
                 <div className='ml-4'>
                     <h1 className='text-xl'>{name}</h1>
-                    <p className='text-slate-600'>{recentMessage}</p>
+                    <p className='text-slate-600'>{recentMessage.substring(0, 15)}...</p>
                 </div>
             </div>
             <div className='ml-8 justify-end'>
